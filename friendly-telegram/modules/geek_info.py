@@ -30,7 +30,7 @@ class GeekInfoMod(loader.Module):
         "_custom_button_doc": "Custom buttons.",
         "_photo_url_doc": "You can set your own photo to geek info.",
         "default_message": (
-            "<b><emoji document_id=5240027055088745962>🌟</emoji> GeekTG Userbot</b>\n\n"
+            "<b>🌟 GeekTG Userbot</b>\n\n"
             "<b>🤴 Owner:</b> {owner}\n"
             "<b>🔮 Version:</b> <i>{version}</i>\n"
             "<b>🧱 Build:</b> {build}\n"
