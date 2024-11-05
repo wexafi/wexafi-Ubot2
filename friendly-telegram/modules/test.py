@@ -12,7 +12,8 @@ import time
 
 import logging
 from io import BytesIO
-from telethon import TelegramClient
+from pyrogram import Client
+from pyrogram.emoji import get_emoji_id
 from .. import loader, utils
 
 from typing import Union
