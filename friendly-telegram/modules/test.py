@@ -235,7 +235,7 @@ class TestMod(loader.Module):
 
         ms = (end - start) * 0.000001
 
-        await utils.answer(message, self.strings("results_ping").format(round(ms, 3)))
+        await utils.answer(message, self.strings(f"results_ping").format(round(ms, 3)))
 
     async def client_ready(self, client, db) -> None:
         self._client = client
