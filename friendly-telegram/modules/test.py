@@ -224,16 +224,17 @@ class TestMod(loader.Module):
         except ValueError:
             await utils.answer(message, self.strings("suspend_invalid_time", message))
 
-    async def pingcmd(self, message: Message):
-        """Test your userbot ping"""
+    @loader.owner
+    async def ping(self, message: Message):
         start = time.perf_counter_ns()
         message = await utils.answer(message, "🌘")
-        end = time.perf_counter_ns()
 
-        if isinstance(message, (list, tuple, set)):
-            message = message[0]
-
-        ms = (end - start) * 0.000001
+        await utils.answer(
+            message,
+            self.strings("results_ping").format(
+                round((time.perf_counter_ns() - start) / 10**6, 3)
+            )
+        )
 
         await utils.answer(message, self.strings(f"results_ping").format(round(ms, 3)))
 
