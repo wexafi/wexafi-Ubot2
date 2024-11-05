@@ -37,7 +37,7 @@ class TestMod(loader.Module):
         "logs_caption": "🗞 GeekTG logs with verbosity {}",
         "suspend_invalid_time": "🚫 <b>Invalid time to suspend</b>",
         "suspended": "🥶 <b>Bot suspended for</b> <code>{}</code> <b>seconds</b>",
-        "results_ping": "🥶 <b>Ping:</b> <code>{}</code> <b>ms</b>",
+        "results_ping": "🌘 <b>Ping:</b> <code>{}</code> <b>ms</b>",
         "confidential":(
             "⚠️ <b>Log level </b><code>{}</code><b> "
             "may reveal your confidential info, be careful</b>"
