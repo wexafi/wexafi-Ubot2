@@ -12,7 +12,7 @@ import time
 
 import logging
 from io import BytesIO
-
+from telethon import TelegramClient
 from .. import loader, utils
 
 from typing import Union
@@ -229,13 +229,14 @@ class TestMod(loader.Module):
         start = time.perf_counter_ns()
         message = await utils.answer(message, "<code>Ping checking...</code>")
         end = time.perf_counter_ns()
+        unicode_emoji = emoji.emojize(<emoji document_id=5438268597849827727>❤️</emoji>)
 
         if isinstance(message, (list, tuple, set)):
             message = message[0]
 
         ms = (end - start) * 0.000001
 
-        await utils.answer(message, self.strings("results_ping").format(round(ms, 3)))
+        await utils.answer(message, self.strings(unicode_emoji,"results_ping").format(round(ms, 3)))
 
     async def client_ready(self, client, db) -> None:
         self._client = client
