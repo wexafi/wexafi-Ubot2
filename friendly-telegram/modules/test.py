@@ -225,7 +225,7 @@ class TestMod(loader.Module):
             await utils.answer(message, self.strings("suspend_invalid_time", message))
 
     @loader.owner
-    async def ping(self, message: Message):
+    async def pingcmd(self, message: Message):
         start = time.perf_counter_ns()
         message = await utils.answer(message, "🌘")
 
