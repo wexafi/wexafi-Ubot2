@@ -37,7 +37,7 @@ class TestMod(loader.Module):
         "logs_caption": "🗞 GeekTG logs with verbosity {}",
         "suspend_invalid_time": "🚫 <b>Invalid time to suspend</b>",
         "suspended": "🥶 <b>Bot suspended for</b> <code>{}</code> <b>seconds</b>",
-        "results_ping": "<emoji document_id=5420315771991497307>🔥</emoji> <b>Ping:</b> <code>{}</code> <b>ms</b>"
+        "results_ping": "⏱ <b>Ping:</b> <code>{}</code> <b>ms</b>",
         "confidential":(
             "⚠️ <b>Log level </b><code>{}</code><b> "
             "may reveal your confidential info, be careful</b>"
@@ -224,11 +224,10 @@ class TestMod(loader.Module):
         except ValueError:
             await utils.answer(message, self.strings("suspend_invalid_time", message))
 
-    @loader.owner
-    async def pingcmd(self, message: Message):
+    async def pingcmd(self, message: Message) -> None:
         """Test your userbot ping"""
         start = time.perf_counter_ns()
-        message = await utils.answer(message, "🌘")
+        message = await utils.answer(message, "<code>Ping checking...</code>")
         end = time.perf_counter_ns()
 
         if isinstance(message, (list, tuple, set)):
