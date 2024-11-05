@@ -9,7 +9,7 @@
 # scope: inline_content
 
 import time
-
+from hikkatl.tl.types import Message
 import logging
 from io import BytesIO
 from telethon import TelegramClient, events
