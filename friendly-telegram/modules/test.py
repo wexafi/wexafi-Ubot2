@@ -226,17 +226,17 @@ class TestMod(loader.Module):
 
     @loader.owner
     async def pingcmd(self, message: Message):
-    """Test your userbot ping"""
-    start = time.perf_counter_ns()
-    message = await utils.answer(message, "🌘")
-    end = time.perf_counter_ns()
+        """Test your userbot ping"""
+        start = time.perf_counter_ns()
+        message = await utils.answer(message, "🌘")
+        end = time.perf_counter_ns()
 
-    if isinstance(message, (list, tuple, set)):
-        message = message[0]
+        if isinstance(message, (list, tuple, set)):
+            message = message[0]
 
-    ms = (end - start) * 0.000001
+        ms = (end - start) * 0.000001
 
-    await utils.answer(message, self.strings("results_ping").format(round(ms, 3)))
+        await utils.answer(message, self.strings("results_ping").format(round(ms, 3)))
 
     async def client_ready(self, client, db) -> None:
         self._client = client
