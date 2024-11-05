@@ -231,10 +231,11 @@ class TestMod(loader.Module):
 
         await utils.answer(
             message,
-            self.strings(f"results_ping").format(round(ms, 3)))
+            self.strings("results_ping").format(
+                round((time.perf_counter_ns() - start) / 10**6, 3),
+                utils.formatted_uptime(),
+            )
         )
-
-        await utils.answer(message, self.strings(f"results_ping").format(round(ms, 3)))
 
     async def client_ready(self, client, db) -> None:
         self._client = client
