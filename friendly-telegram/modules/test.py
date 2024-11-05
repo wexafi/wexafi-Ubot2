@@ -12,8 +12,8 @@ import time
 
 import logging
 from io import BytesIO
-from pyrogram import Client
-from pyrogram.emoji import get_emoji_id
+from telethon import TelegramClient, events
+from telethon.utils import get_input_peer
 from .. import loader, utils
 
 from typing import Union
@@ -38,7 +38,7 @@ class TestMod(loader.Module):
         "logs_caption": "🗞 GeekTG logs with verbosity {}",
         "suspend_invalid_time": "🚫 <b>Invalid time to suspend</b>",
         "suspended": "🥶 <b>Bot suspended for</b> <code>{}</code> <b>seconds</b>",
-        "results_ping": "😈 <b>Ping:</b> <code>{}</code> <b>ms</b>",
+        "results_ping": "<emoji document_id=5433845245391420909>🤑</emoji> <b>Ping:</b> <code>{}</code> <b>ms</b>",
         "confidential":(
             "⚠️ <b>Log level </b><code>{}</code><b> "
             "may reveal your confidential info, be careful</b>"
@@ -225,7 +225,7 @@ class TestMod(loader.Module):
         except ValueError:
             await utils.answer(message, self.strings("suspend_invalid_time", message))
 
-    async def pingcmd(self, message: Message) -> None:
+    async def pingcmd(self, message: Message):
         """Test your userbot ping"""
         start = time.perf_counter_ns()
         message = await utils.answer(message, "<code>Ping checking...</code>")
@@ -236,7 +236,7 @@ class TestMod(loader.Module):
 
         ms = (end - start) * 0.000001
 
-        await utils.answer(message, self.strings("results_ping").format(round(ms, 3)))
+        await client.send_message(message, self.strings("results_ping").format(round(ms, 3)))
 
     async def client_ready(self, client, db) -> None:
         self._client = client
